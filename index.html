@@ -1,0 +1,320 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Saqib | BS Mathematics & Software Enthusiast</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Glassmorphism effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Typing animation caret */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo / Name -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                    MS
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">Muhammad Saqib</span>
+                    <span class="block text-xs text-slate-500 dark:text-slate-400">BS Mathematics | BZU Multan</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+                <a href="#education" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Education</a>
+                <a href="#skills" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#projects" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
+                <a href="#contact" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Theme Toggle & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+                </button>
+
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-slate-200 dark:border-slate-800 px-6 py-6 flex flex-col gap-4">
+            <a href="#about" class="mobile-nav-link text-base font-medium hover:text-brand-600">About Me</a>
+            <a href="#education" class="mobile-nav-link text-base font-medium hover:text-brand-600">Education & Journey</a>
+            <a href="#skills" class="mobile-nav-link text-base font-medium hover:text-brand-600">Skills & Tools</a>
+            <a href="#projects" class="mobile-nav-link text-base font-medium hover:text-brand-600">Projects Showcase</a>
+            <a href="#contact" class="mobile-nav-link text-base font-medium hover:text-brand-600">Contact & Socials</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-brand-500/20 to-purple-500/20 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 font-medium text-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        BS Mathematics Student & Tech Learner
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Muhammad Saqib</span>
+                    </h1>
+
+                    <div class="text-xl sm:text-2xl font-semibold text-slate-600 dark:text-slate-300 h-10 flex items-center justify-center lg:justify-start">
+                        <span id="typingElement" class="typing-cursor text-brand-600 dark:text-brand-400"></span>
+                    </div>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Passionate about connecting mathematical algorithms with software technology. Currently mastering <span class="font-semibold text-slate-800 dark:text-slate-200">C++</span>, <span class="font-semibold text-slate-800 dark:text-slate-200">Python</span>, and exploring web development & data computational models.
+                    </p>
+
+                    <!-- Quick Info Pills -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 py-2 text-xs font-semibold">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-university text-brand-500 mr-1.5"></i>BZU Multan
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-graduation-cap text-indigo-500 mr-1.5"></i>Semester 3
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-id-badge text-emerald-500 mr-1.5"></i>Roll: BSMS12525
+                        </span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-semibold shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-[1.02] transition-all text-center">
+                            View My Projects <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800 font-semibold transition-all text-center">
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center lg:justify-start gap-4 pt-6 text-xl">
+                        <a href="https://github.com/msaqib0963-wq" target="_blank" class="w-11 h-11 rounded-xl glass flex items-center justify-center hover:text-brand-500 hover:scale-110 transition-all" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-xl glass flex items-center justify-center hover:text-brand-500 hover:scale-110 transition-all" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:msaqib0963@gmail.com" class="w-11 h-11 rounded-xl glass flex items-center justify-center hover:text-brand-500 hover:scale-110 transition-all" title="Email">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Card / Visual -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Glow Frame -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-500 to-purple-600 rounded-3xl blur-lg opacity-70 animate-pulse"></div>
+                        
+                        <div class="relative glass rounded-3xl p-8 space-y-6 text-center border border-white/20">
+                            <div class="relative w-36 h-36 mx-auto rounded-full p-1 bg-gradient-to-tr from-brand-500 to-purple-600 shadow-xl">
+                                <div class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl font-bold text-white tracking-widest border-2 border-slate-800">
+                                    MS
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold">Muhammad Saqib</h3>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">BS Mathematics (2025-2029)</p>
+                            </div>
+
+                            <div class="space-y-3 text-left border-t border-slate-200 dark:border-slate-800 pt-4 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-500 dark:text-slate-400">University:</span>
+                                    <span class="font-medium">BZU Multan</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-500 dark:text-slate-400">Semester:</span>
+                                    <span class="font-medium">3rd Semester</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-500 dark:text-slate-400">Roll Number:</span>
+                                    <span class="font-mono text-brand-600 dark:text-brand-400 font-semibold">BSMS12525</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-500 dark:text-slate-400">Focus:</span>
+                                    <span class="font-medium">C++ & Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Background</h2>
+                <p class="text-3xl sm:text-4xl font-bold">About Me & My Vision</p>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Personal Narrative Card -->
+                <div class="glass rounded-2xl p-8 space-y-4 border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Bridging Mathematics & Programming</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            I am a undergraduate student currently pursuing my Bachelor's degree in Mathematics at <span class="font-semibold text-slate-800 dark:text-slate-200">Bahauddin Zakariya University, Multan</span>. 
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            My goal is to integrate abstract mathematical thinking, linear algebra, calculus, and logic with modern computational tools. By learning <span class="font-semibold text-slate-800 dark:text-slate-200">C++</span> and <span class="font-semibold text-slate-800 dark:text-slate-200">Python</span>, I aim to build efficient algorithms, simulation models, and intelligent software utilities.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+                        <div>
+                            <span class="block text-2xl font-bold text-brand-600 dark:text-brand-400">3rd</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Current Semester</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400">2025-29</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Academic Session</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Highlights Card -->
+                <div class="glass rounded-2xl p-8 space-y-6 border border-slate-200 dark:border-slate-800">
+                    <h3 class="text-2xl font-bold flex items-center gap-3">
+                        <i class="fa-solid fa-book-bookmark text-brand-500"></i> Core Study Areas
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-square-root-variable"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-base">Mathematical Logic & Calculus</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Developing deep problem-solving skills and analytical capabilities essential for high-performance algorithm design.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-base">C++ Object-Oriented Programming</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Focusing on memory management, pointers, and data structures for building high-speed console applications.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-brands fa-python"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-base">Python Computational Scripts</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Writing automation scripts and numerical mathematical analysis workflows using Python libraries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education" class="py-16 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:t
